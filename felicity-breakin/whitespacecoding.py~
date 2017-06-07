@@ -1,0 +1,8 @@
+for character in file_contents:
+    if character == " ":
+        space +=1
+    elif character == '\t': 
+        tabs += 1
+    elif character == '\n': 
+        newline += 1
+return space, tabs, newline
