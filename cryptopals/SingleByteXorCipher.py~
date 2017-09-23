@@ -1,0 +1,10 @@
+import binascii
+
+inputstr = binascii.unhexlify('1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736')
+
+for i in range(256) :
+    out = b''
+    for char in list(inputstr) :
+        out += bytes([char ^ i])
+    print(out)
+     

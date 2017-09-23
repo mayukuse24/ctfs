@@ -1,0 +1,21 @@
+import base64
+from operator import itemgetter
+
+def detectAESECB(msg_barr,bsize) :
+    total = 0
+    for b1 in range(0,len(msg_barr)-2*bsize) :
+        for b2 in range(b1+bsize,len(msg_barr),bsize) :
+            if msg_barr[b1] == msg_barr[b2] :
+                total += 1
+
+    return total
+
+content = open("8.txt").read()
+content = content.split("\n")
+
+ans_list = []
+for message in content :
+    ans_list.append((message,detectAESECB(bytes(message,"ascii"),16)))
+
+print(sorted(ans_list,key=itemgetter(1),reverse=True))
+
